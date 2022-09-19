@@ -1,0 +1,24 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand mb-0 h1" *ngIf="activeroute == 'home'" ><i class="bi bi-journal-text"></i> Notes</a>
+        <a class="navbar-brand mb-0 h1" routerLink="/app-started"  *ngIf="activeroute != 'home'"><i class="bi bi-journal-text"></i> Notes</a>
+        <span class="navbar-brand" *ngIf="activeroute == 'home'" (click)="open(content)">profile <i class="bi bi-file-earmark-person-fill"></i></span>
+        <a  class="navbar-text"  routerLink="/sginup" *ngIf="activeroute == 'login'"><span >SGIN Up <i class="bi bi-box-arrow-in-right"></i></span></a>
+        <a  class="navbar-text" routerLink="/login"  *ngIf="activeroute == 'sginup'"><span>LOG IN <i class="bi bi-box-arrow-in-right"></i></span></a>
+        <a  class="navbar-text" routerLink="/login"  *ngIf="activeroute == 'app-started'"><span>LOG IN <i class="bi bi-box-arrow-in-right"></i></span></a>
+        <a  class="navbar-text" routerLink="/app-started" (click)=" removelogin()"  *ngIf="activeroute == 'home'"><span>LOG OUT <i class="bi bi-box-arrow-in-right"></i></span></a>
+
+    </div>
+</nav>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi {{profile.name}}</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+     <span>Your Email :</span> <p>{{profile.email}}</p>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </ng-template>
+  

@@ -1,0 +1,24 @@
+.main{
+    padding: 20px;
+    border: 1px solid white;
+    background-color: rgb(33 37 41);
+    color:white;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.head{
+    padding-right:10px ;
+    border-bottom: 1px white solid;
+}
+.bodys{
+    display: inline-block;
+    padding-right:10px ;
+    border-bottom: 1px white solid;
+    padding: 5px 0px; 
+}
+.footer{
+    padding: 5px 0px;
+}
+body{
+    overflow-y: hidden;
+}

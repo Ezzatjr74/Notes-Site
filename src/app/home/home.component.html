@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+
+<!-- form to create new notes -->
+
+<div class="container mt-5 ">
+  <div class="input-group mb-1 w-50">
+    <input type="text" class="form-control" #title placeholder="Title">
+  </div>
+  <div class="input-group input-group-lg">
+    <input type="text" placeholder="Write Your Notes" #note class="form-control" aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-lg">
+    <button class="btn btn-dark" type="submit" id="inputGroup-sizing-lg" (click)="postdata(title,note)">save</button>
+  </div>
+</div>
+
+<!-- our notes in div continer for all notes  -->
+
+
+<div class="row">
+  <div class="main col-4" *ngFor="let post of posts">
+    <div class="head">
+      <h6><strong>TITLE : </strong> {{post.title | uppercase}}</h6>
+    </div>
+    <div class="bodys">
+      <p><strong>Note : </strong> {{post.body}}</p>
+    </div>
+    <div class="footer">
+      <button class="btn btn-md btn-light" (click)="open(content)">Edit</button>
+      <button class="btn btn-md btn-light ms-1" (click)="deletpost(post)">delete</button>
+    </div>
+
+    <!-- edit model to update any note -->
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h6 class="modal-title" id="modal-basic-title">Title: + {{ post.title}}</h6>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="input-group mb-3 w-50">
+          <input type="text" class="form-control" #updatetitle [value]="post.title" placeholder="title note"
+            aria-label="Username">
+        </div>
+
+        <label>Edit Note</label>
+        <div class="form-floating">
+          <textarea class="form-control" #updatebody [value]="post.body"
+            id="floatingTextarea2" style="height: 100px"></textarea>
+        </div>
+      </div>
+      <!-- button to send update -->
+
+      <div class="modal-footer">
+        <button class="btn btn-lg btn-outline-primary" (click)="updatepost(post,updatetitle,updatebody)">Update</button>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
